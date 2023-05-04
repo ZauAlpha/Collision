@@ -34,10 +34,15 @@ namespace Collision
         private void TIMER_Tick(object sender, EventArgs e)
         {
             graphics.Clear(SystemColors.ActiveCaption);
-            foreach (Ball b in balls)
+            for(int i=0; i<balls.Count();i++)
             {
-                b.Move();
-                b.Draw();
+                Ball b = balls[i];
+                for(int j=i+1; j<balls.Count();j++)
+                {
+                    Ball c = balls[j];    
+                    b.Move(c);
+                    b.Draw();
+                }
 
             }
             PICTURE_BOX.Invalidate();
